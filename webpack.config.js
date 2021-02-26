@@ -7,19 +7,18 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: /node_modules\/(?!react-intl|intl-messageformat|intl-messageformat-parser)/,
         use: [
           {
-            loader: "ts-loader",
+            loader: 'ts-loader',
             options: {
-              getCustomTransformers: {
+              getCustomTransformers: () => ({
                 before: [
                   transform({
-                    overrideIdFn: "[sha512:contenthash:base64:6]",
+                    overrideIdFn: '[sha512:contenthash:base64:6]',
                     ast: true,
                   }),
                 ],
-              },
+              }),
             },
           },
         ],
